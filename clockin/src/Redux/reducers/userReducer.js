@@ -1,5 +1,5 @@
-// userReducer.js
-import * as actionTypes from '../Actions/actionTypes';
+// src/Redux/reducers/userReducer.js
+import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
     isAuthenticated: false,

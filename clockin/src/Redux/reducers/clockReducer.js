@@ -1,5 +1,5 @@
 // clockReducer.js
-import * as actionTypes from '../Actions/actionTypes';
+import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
     clockedIn: false,

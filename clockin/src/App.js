@@ -1,22 +1,28 @@
-import logo from './logo.svg';
+// src/App.js
+import React from 'react';
 import './App.css';
+import LoginForm from './Components/LoginForm';
+import RegistrationForm from './Components/RegistrationForm';
+import ClockControl from './Components/ClockControl';
+import { useSelector } from 'react-redux'; 
 
 function App() {
+  // Get the logged-in status from global state (adjust the selector as needed)
+  const isLoggedIn = useSelector(state => state.user.isAuthenticated);
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        {/* Show login and registration forms only if not logged in */}
+        {!isLoggedIn && (
+          <>
+            <LoginForm />
+            <RegistrationForm />
+          </>
+        )}
+
+        {/* Show clock control if logged in */}
+        {isLoggedIn && <ClockControl />}
       </header>
     </div>
   );

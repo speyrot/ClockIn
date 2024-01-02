@@ -1,4 +1,4 @@
-// clockActions.js
+// src/Redux/actions/clockActions.js
 import * as actionTypes from './actionTypes';
 
 export const clockIn = (time, location) => {
