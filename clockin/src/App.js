@@ -1,28 +1,25 @@
 // src/App.js
 import React from 'react';
-import './App.css';
 import LoginForm from './Components/LoginForm';
 import RegistrationForm from './Components/RegistrationForm';
-import ClockControl from './Components/ClockControl';
-import { useSelector } from 'react-redux'; 
+import LandingPage from './Components/LandingPage';
+import { useSelector } from 'react-redux';
+import { Routes, Route } from 'react-router-dom'; // Import Routes and Route
 
 function App() {
-  // Get the logged-in status from global state (adjust the selector as needed)
   const isLoggedIn = useSelector(state => state.user.isAuthenticated);
 
   return (
     <div className="App">
       <header className="App-header">
-        {/* Show login and registration forms only if not logged in */}
-        {!isLoggedIn && (
-          <>
-            <LoginForm />
-            <RegistrationForm />
-          </>
+        {!isLoggedIn ? (
+          <Routes>
+            <Route path="/login" element={<LoginForm />} /> 
+            <Route path="/register" element={<RegistrationForm />} /> 
+          </Routes>
+        ) : (
+          <LandingPage />
         )}
-
-        {/* Show clock control if logged in */}
-        {isLoggedIn && <ClockControl />}
       </header>
     </div>
   );
