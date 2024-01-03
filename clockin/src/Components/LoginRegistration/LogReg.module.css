@@ -1,0 +1,95 @@
+/* LogReg.module.css */
+body, html {
+    height: 100%; 
+    margin: 0; 
+
+}
+
+.loginFormContainer {
+    height: 100vh;
+    background-color: #4F565B;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin: auto;
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);  
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+}
+
+.loginForm {
+    width: 100%;
+    text-align: center;
+    color: #4F565B;
+}
+
+.loginFormField {
+    
+    padding: 5px 12px;
+    font-size: 1em;
+    border: 2px solid #4F565B;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+    color: #4F565B;
+}
+.card-body {
+    border: none;
+}
+
+.loginFormButton {
+    width: 100%;
+    background-color: #E88D29 !important; 
+    color: #FFFFFF;
+    border-color: #E88D29 !important;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.formLabel, .cardBodyP {
+    color: #4F565B;
+}
+
+.floatingLabel {
+    position: relative;
+}
+
+.floatingLabel input[type="text"],
+.floatingLabel input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px; 
+    margin-bottom: 30px;
+    font-size: 1em;
+    border: 2px solid #4F565B;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+    color: #4F565B;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.floatingLabel label {
+    position: absolute;
+    top: 0;
+    left: 12px; 
+    padding: 15px 0 0 0; 
+    margin: 0; 
+    color: #4F565B; 
+    background-color: transparent;
+    cursor: text; 
+    transition: transform 0.3s, font-size 0.3s, color 0.3s;
+    transform-origin: 0 0; 
+}
+
+.floatingLabel input:not(:placeholder-shown) + label,
+.floatingLabel input:focus + label {
+    transform: translateY(-100%) translateX(-12px); 
+    color: #E88D29;
+}

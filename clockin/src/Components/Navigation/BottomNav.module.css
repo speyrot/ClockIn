@@ -1,0 +1,52 @@
+/* BottomNav.module.css */
+.bottomNavContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed; /* Fixed at the bottom */
+    bottom: 0; /* Stick to the bottom */
+    left: 0;
+    width: 100%;
+    height: 60px; /* Adjust based on your need */
+    background-color: #fff; /* Change as needed */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Optional: adds a subtle shadow */
+    z-index: 1000; /* Ensure it's above other items */
+}
+
+.navItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    cursor: pointer;
+    text-decoration: none; /* Removes underline from all nav items */
+    color: inherit; /* Inherits color to ensure consistency */
+}
+
+.navItem:hover, .navItem:focus {
+    background-color: #f8f8f8; /* Optional: Change as needed for hover effect */
+}
+
+.navIcon {
+    font-size: 24px; /* Adjust icon size */
+    color: #333; /* Icon color */
+}
+
+/* Active class styling for NavLink */
+.active .navIcon {
+    color: #E88D29; /* Example: Change icon color when active */
+}
+
+.active small {
+    color: #E88D29; /* Example: Change label color when active */
+}
+
+/* Label styling */
+.bottomNavContainer small {
+    display: block;
+    font-size: 12px; /* Adjust label size */
+    color: #333; /* Label color */
+    text-align: center; /* Center align the label text */
+}
+
