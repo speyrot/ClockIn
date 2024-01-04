@@ -1,22 +1,36 @@
-// src/components/Dashboard.js
+// src/components/Dashboard/Dashboard.js
 import React from 'react';
 import styles from './Dashboard.module.css'; // Import the CSS module for styling
 
+function getCurrentWeek(currentDate) {
+    let week = [];
+    // Clone current date to avoid mutating original date
+    let date = new Date(currentDate.getTime());
+    // Starting from the current day go back to the last Sunday (or the day you consider start of the week)
+    date.setDate(date.getDate() - date.getDay()); // Go back to the last Sunday
+    for (let i = 0; i < 7; i++) { // Loop for 7 days
+      let day = new Date(date);
+      week.push(day);
+      date.setDate(date.getDate() + 1); // Move to next day
+    }
+    return week;
+}
+
 const Dashboard = () => {
-  // You might want to generate or fetch these dates dynamically
   const weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  const currentDate = new Date(); // Get current date for highlighting
+  const currentDate = new Date();
+  const currentWeek = getCurrentWeek(currentDate);
 
   return (
     <div className={`container ${styles.dashboardContainer}`}>
       {/* Calendar Section */}
       <div className={`row ${styles.calendarSection}`}>
-        {weekDays.map((day, index) => {
-          const isToday = currentDate.getDay() === index; // Check if this day is today
+        {currentWeek.map((date, index) => {
+          const isToday = currentDate.getDate() === date.getDate() && currentDate.getMonth() === date.getMonth();
           return (
             <div className={`col ${isToday ? styles.highlight : ''}`} key={index}>
-              <div>{day}</div> {/* Abbreviated day name */}
-              <div>{/* Numerical Date Here */}</div>
+              <div>{weekDays[date.getDay()]}</div> {/* Abbreviated day name */}
+              <div>{date.getDate()}</div> {/* Numerical Date Here */}
             </div>
           );
         })}
