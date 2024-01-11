@@ -1,6 +1,8 @@
 // src/components/Dashboard/Dashboard.js
 import React from 'react';
-import styles from './Dashboard.module.css'; // Import the CSS module for styling
+import Clock from '../Clock/Clock';
+import styles from './Dashboard.module.css'; 
+import HeaderComponent from '../Header/Header';
 
 function getCurrentWeek(currentDate) {
     let week = [];
@@ -22,31 +24,35 @@ const Dashboard = () => {
   const currentWeek = getCurrentWeek(currentDate);
 
   return (
-    <div className={`container ${styles.dashboardContainer}`}>
-      {/* Calendar Section */}
-      <div className={`row ${styles.calendarSection}`}>
-        {currentWeek.map((date, index) => {
-          const isToday = currentDate.getDate() === date.getDate() && currentDate.getMonth() === date.getMonth();
-          return (
-            <div className={`col ${isToday ? styles.highlight : ''}`} key={index}>
-              <div>{weekDays[date.getDay()]}</div> {/* Abbreviated day name */}
-              <div>{date.getDate()}</div> {/* Numerical Date Here */}
-            </div>
-          );
-        })}
-      </div>
+    <div>
+      {/* Header Section */}
+      <HeaderComponent />
 
-      {/* Clock In Container */}
-      <div className={`row ${styles.clockInContainer}`}>
-        <div className="col">
-          <p>Clock In Functionality Goes Here</p>
+      <div className={`container ${styles.dashboardContainer}`}>
+        
+        {/* Calendar Section */}
+        <div className={`row ${styles.calendarSection}`}>
+          {currentWeek.map((date, index) => {
+            const isToday = currentDate.getDate() === date.getDate() && currentDate.getMonth() === date.getMonth();
+            return (
+              <div className={`col ${isToday ? styles.highlight : ''}`} key={index}>
+                <div>{weekDays[date.getDay()]}</div> {/* Abbreviated day name */}
+                <div>{date.getDate()}</div> {/* Numerical Date Here */}
+              </div>
+            );
+          })}
         </div>
-      </div>
 
-      {/* Running Total of Hours Worked */}
-      <div className={`row ${styles.hoursWorkedContainer}`}>
-        <div className="col">
-          <p>Running Total of Hours Worked This Week</p>
+        {/* Clock In Container */}
+        <div className={`row ${styles.clockInContainer}`}>
+          <Clock />
+        </div>
+
+        {/* Running Total of Hours Worked */}
+        <div className={`row ${styles.hoursWorkedContainer}`}>
+          <div className="col">
+            <p>Running Total of Hours Worked This Week</p>
+          </div>
         </div>
       </div>
     </div>

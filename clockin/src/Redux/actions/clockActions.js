@@ -1,16 +1,15 @@
-// src/Redux/actions/clockActions.js
-import * as actionTypes from './actionTypes';
-
-export const clockIn = (time, location) => {
-    return {
-        type: actionTypes.CLOCK_IN,
-        payload: { time, location }
-    };
+// src/redux/actions/clockActions.js
+export const clockIn = () => {
+    const startTime = Date.now();
+    localStorage.setItem('clockInTime', startTime.toString());
+    return { type: 'CLOCK_IN', startTime };
 };
 
-export const clockOut = (time) => {
-    return {
-        type: actionTypes.CLOCK_OUT,
-        payload: { time }
-    };
+export const clockOut = () => {
+    localStorage.removeItem('clockInTime');
+    return { type: 'CLOCK_OUT' };
+};
+
+export const updateElapsedTime = (elapsedTime) => {
+    return { type: 'UPDATE_ELAPSED_TIME', elapsedTime };
 };

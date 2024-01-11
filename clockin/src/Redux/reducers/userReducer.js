@@ -2,8 +2,9 @@
 import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
-    isAuthenticated: false,
-    user: null,
+    isAuthenticated: Boolean(localStorage.getItem('userToken')),
+    user: JSON.parse(localStorage.getItem('userInfo')),
+    token: localStorage.getItem('userToken'),
     error: null
 };
 

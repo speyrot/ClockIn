@@ -1,0 +1,23 @@
+.headerContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+}
+
+.componentName {
+    font-size: 20px;
+    font-weight: bold;
+    color: #E88D29;
+}
+
+.profilePicPlaceholder {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-image: url('../../../public/profilePics.png'); /* Update the path accordingly */
+    background-size: cover;
+    background-position: center;
+    border: 2px solid #E88D29; 
+}
+

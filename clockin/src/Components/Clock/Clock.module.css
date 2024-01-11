@@ -1,0 +1,45 @@
+/* Clock.module.css */
+.clockContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.digitalClock {
+    font-family: 'Digital-7', 'Courier New', Courier, monospace; /* Digital-7 is a typical digital clock font, you might need to include it or choose another */
+    color: #E88D29; /* Clock text color */
+    background: #333; /* Clock background */
+    font-size: 30px; /* Adjust size as needed */
+    letter-spacing: 2px; /* Spacing between characters */
+    padding: 10px 20px;
+    border-radius: 5px; /* Rounded corners for the clock */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Slight shadow for depth */
+    
+    margin: 5px 0; /* Spacing */
+}
+
+.clockButton {
+    padding: 10px 20px;
+    margin: 5px; /* Space between buttons */
+    color: white; /* Text Color */
+    background-color: #4F565B; /* Button Color */
+    border: none;
+    border-radius: 5px; /* Rounded corners for buttons */
+    cursor: pointer;
+    font-size: 16px;
+    text-transform: uppercase; /* Making text uppercase for a more button-like appearance */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Adding a slight box shadow for depth */
+    transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transition for hover effects */
+}
+
+.clockButton:hover {
+    background-color: #E88D29; /* Change color on hover */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Increased shadow on hover */
+}
+
+.clockButton:disabled {
+    background-color: #AAAAAA; /* Disabled button color */
+    cursor: not-allowed; /* Change cursor to indicate disabled state */
+}

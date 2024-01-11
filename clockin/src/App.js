@@ -1,5 +1,5 @@
 // src/App.js
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import LoginForm from './Components/LoginRegistration/LoginForm';
 import RegistrationForm from './Components/LoginRegistration/RegistrationForm';
@@ -8,10 +8,21 @@ import TimeSheet from './Components/TimeSheet/TimeSheet';
 import Payroll from './Components/Payroll/Payroll';
 import More from './Components/More/More';
 import BottomNav from './Components/Navigation/BottomNav';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 function App() {
   const isLoggedIn = useSelector(state => state.user.isAuthenticated);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    // Check if user is logged in
+    const token = localStorage.getItem('userToken');
+    if (token) {
+      // Here you might want to validate the token by calling an endpoint in your backend
+      // For now, let's just dispatch login success
+      dispatch({ type: 'LOGIN_SUCCESS', payload: { token } });
+    }
+  }, [dispatch]);
 
   return (
     <Router>

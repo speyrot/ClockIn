@@ -4,14 +4,15 @@
     flex-direction: column; /* Stack children vertically */
     align-items: center; /* Center children horizontally */
     justify-content: center; /* Center children vertically */
-    padding-top: 20px; /* Space from top */
-    width: 100%; /* Take full width to center content in the middle */
+    padding: 15px; 
+    width: 100%; 
 }
 
 .calendarSection {
     display: flex; /* Use flexbox for the week row */
     width: 100%; /* Full width of the container */
     justify-content: space-between; /* Distribute space evenly between the days */
+    margin: 20px 0px;
 }
 
 .calendarSection .col {
@@ -32,10 +33,22 @@
     border-radius: 10px; /* Rounded edges */
 }
 
-.clockInContainer,
+.clockInContainer {
+    margin: 20px 0px !important; 
+    border: 2px solid #E88D29;
+    padding: 20px 0; /* Vertical padding */
+    text-align: center; /* Center the content */
+    width: 100%; /* Width of the container */
+    margin: 10px auto; /* Margin top/bottom with auto sides centers the container */
+    border-radius: 10px; /* Rounded edges for modern look */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    background-color: #E88D29; /* Background color for the container */
+}
+
 .hoursWorkedContainer {
-    margin-top: 20px; /* Spacing between sections */
+    margin: 20px 0px !important; 
     border: 1px solid #ddd; /* Temporary border for visibility */
-    padding: 20px;
+    padding: 10px;
     text-align: center; /* Center the placeholder text */
+    width: 100%;
 }

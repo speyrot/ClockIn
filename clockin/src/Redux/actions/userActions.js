@@ -31,6 +31,8 @@ export const loginUser = (credentials) => {
             const { token, user } = response.data;
             // Store the token in local storage or cookies as needed
             localStorage.setItem('userToken', token);
+            localStorage.setItem('userInfo', JSON.stringify(user));
+
             dispatch({
                 type: actionTypes.LOGIN_SUCCESS,
                 payload: { user, token }
@@ -47,6 +49,8 @@ export const loginUser = (credentials) => {
 export const logoutUser = () => {
     // Clear the token from storage and reset user state
     localStorage.removeItem('userToken');
+    localStorage.removeItem('userInfo');
+    
     return {
         type: actionTypes.LOGOUT_SUCCESS
     };
