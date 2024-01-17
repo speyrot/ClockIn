@@ -17,29 +17,35 @@ Clock.init({
             model: 'users', 
             key: 'id'
         },
-        field: 'userid' // Explicitly set the field name
+        field: 'userid' 
     },
     clockintime: {
         type: DataTypes.DATE,
         allowNull: true,
-        field: 'clockintime' // Explicitly set the field name
+        field: 'clockintime' 
     },
     clockouttime: {
         type: DataTypes.DATE,
         allowNull: true,
-        field: 'clockouttime' // Explicitly set the field name
+        field: 'clockouttime' 
     },
     createdAt: {
         type: DataTypes.DATE,
         allowNull: false,
         defaultValue: DataTypes.NOW,
-        field: 'createdat' // Explicitly set the field name
+        field: 'createdat' 
     },
     updatedAt: {
         type: DataTypes.DATE,
         allowNull: false,
         defaultValue: DataTypes.NOW,
-        field: 'updatedat' // Explicitly set the field name
+        field: 'updatedat' 
+    },
+    totalWorkedTime: {
+        type: DataTypes.STRING, 
+        allowNull: true,
+        defaultValue: '00:00:00',
+        field: 'totalworkedtime' 
     }
 }, {
     sequelize,

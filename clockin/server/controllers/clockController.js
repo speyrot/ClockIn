@@ -11,6 +11,23 @@ const calculateElapsedTime = (clockInTimeStr) => {
     return elapsed;
 };
 
+function formatTime(milliseconds) {
+    let totalSeconds = Math.floor(milliseconds / 1000);
+    let totalMinutes = Math.floor(totalSeconds / 60);
+    let totalHours = Math.floor(totalMinutes / 60);
+
+    let seconds = totalSeconds % 60;
+    let minutes = totalMinutes % 60;
+    let hours = totalHours;
+
+    // Padding with leading zeros for single digit values
+    seconds = seconds.toString().padStart(2, '0');
+    minutes = minutes.toString().padStart(2, '0');
+    hours = hours.toString().padStart(2, '0');
+
+    return `${hours}:${minutes}:${seconds}`;
+}
+
 const clockController = {
     // Gets clock-in time
     getClockInTime: async function(req, res) {
@@ -71,9 +88,9 @@ const clockController = {
 
     // Clock user out
     clockOut: async function(req, res) {
-        const userId = req.user.id; // Assuming userId is obtained from authenticated user
+        const userId = req.user.id;
+    
         try {
-            // Find the latest clock-in record for the user and update with clock-out time
             const latestClockIn = await Clock.findOne({
                 where: { 
                     userid: userId,
@@ -81,12 +98,18 @@ const clockController = {
                 },
                 order: [['clockintime', 'DESC']]
             });
-
+    
             if (!latestClockIn) {
                 return res.status(400).json({ msg: 'No clock-in record found to clock out' });
             }
-
+    
             latestClockIn.clockouttime = new Date();
+            const clockInTime = new Date(latestClockIn.clockintime);
+            const clockOutTime = latestClockIn.clockouttime;
+    
+            const elapsedMilliseconds = clockOutTime.getTime() - clockInTime.getTime();
+            latestClockIn.totalWorkedTime = formatTime(elapsedMilliseconds); // Format elapsed time
+    
             await latestClockIn.save();
             res.json(latestClockIn);
         } catch (error) {
