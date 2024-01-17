@@ -6,7 +6,7 @@ import RegistrationForm from './Components/LoginRegistration/RegistrationForm';
 import Dashboard from './Components/Dashboard/Dashboard'; 
 import TimeSheet from './Components/TimeSheet/TimeSheet';
 import Payroll from './Components/Payroll/Payroll';
-import More from './Components/More/More';
+import Settings from './Components/Settings/Settings';
 import BottomNav from './Components/Navigation/BottomNav';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -40,7 +40,7 @@ function App() {
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/timesheet" element={<TimeSheet />} />
                 <Route path="/payroll" element={<Payroll />} />
-                <Route path="/more" element={<More />} />
+                <Route path="/settings" element={<Settings />} />
                 <Route path="*" element={<Navigate replace to="/dashboard" />} />
               </Routes>
               <BottomNav />

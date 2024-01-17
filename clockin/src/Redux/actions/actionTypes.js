@@ -1,8 +1,11 @@
 // src/Redux/actions/actionTypes.js
 export const USER_LOGIN = 'USER_LOGIN';
 export const USER_LOGOUT = 'USER_LOGOUT';
-export const CLOCK_IN = 'CLOCK_IN';
-export const CLOCK_OUT = 'CLOCK_OUT';
+export const FETCH_CLOCK_IN_TIME_SUCCESS = 'FETCH_CLOCK_IN_TIME_SUCCESS';
+export const CLOCK_IN_SUCCESS = 'CLOCK_IN_SUCCESS';
+export const CLOCK_OUT_SUCCESS = 'CLOCK_OUT_SUCCESS';
+export const UPDATE_ELAPSED_TIME = 'UPDATE_ELAPSED_TIME';
+export const CLOCK_ERROR = 'CLOCK_ERROR';
 export const SET_LOCATION = 'SET_LOCATION';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';

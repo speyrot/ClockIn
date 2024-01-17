@@ -15,13 +15,16 @@ module.exports = function(passport) {
         new JwtStrategy(options, async (jwt_payload, done) => {
             try {
                 // Find the user specified in token using a database query
+                console.log('Authenticating user with JWT Payload:', jwt_payload);
                 const userRes = await pool.query('SELECT * FROM users WHERE id = $1', [jwt_payload.id]);
 
                 // Check if user was found
                 if (userRes.rows.length > 0) {
+                    console.log('User found in JWT Strategy:', userRes.rows[0]);
                     const user = userRes.rows[0];
                     return done(null, user);
                 } else {
+                    console.log('User not found in JWT Strategy');
                     return done(null, false); // No user found
                 }
             } catch (error) {

@@ -6,7 +6,7 @@ const useCurrentPageName = () => {
         '/dashboard': 'Dashboard',
         '/timesheet': 'Timesheet',
         '/payroll': 'Payroll',
-        '/more': 'More',
+        '/settings': 'Settings',
     };
 
     return pathToPageNameMap[location.pathname] || 'Unknown';

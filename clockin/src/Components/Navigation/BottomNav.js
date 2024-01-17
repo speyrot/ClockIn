@@ -29,11 +29,11 @@ const BottomNav = () => {
         <small>Payroll</small>
       </NavLink>
       <NavLink 
-        to="/more" 
+        to="/settings" 
         className={({ isActive }) => isActive ? `${styles.navItem} ${styles.active}` : styles.navItem}
       >
         <BsPersonVcardFill className={styles.navIcon} />
-        <small>More</small>
+        <small>Settings</small>
       </NavLink>
     </div>
   );

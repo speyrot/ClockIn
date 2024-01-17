@@ -25,5 +25,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api/users', userRoutes);
 app.use('/api/clock', clockRoutes);
 
+app.use((err, req, res, next) => {
+    console.error('Unhandled error:', err); // Log unhandled errors
+    res.status(500).send('Internal Server Error');
+});
+
 const PORT = 3001;  // Use environment variable for PORT or default to 3001
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

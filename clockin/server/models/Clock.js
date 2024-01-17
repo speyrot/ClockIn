@@ -1,30 +1,52 @@
+// Server/models/Clock.js
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('./index'); // Adjust the path as necessary
+const sequelize = require('./index'); 
 
 class Clock extends Model {}
 
 Clock.init({
-    // Define attributes
-    userId: {
+    id: {
         type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+    },
+    userid: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
         references: {
-            model: 'User',
+            model: 'users', 
             key: 'id'
-        }
+        },
+        field: 'userid' // Explicitly set the field name
     },
-    clockInTime: {
+    clockintime: {
         type: DataTypes.DATE,
-        allowNull: true
+        allowNull: true,
+        field: 'clockintime' // Explicitly set the field name
     },
-    clockOutTime: {
+    clockouttime: {
         type: DataTypes.DATE,
-        allowNull: true
+        allowNull: true,
+        field: 'clockouttime' // Explicitly set the field name
     },
-    // Add other necessary fields like geolocation data if needed
+    createdAt: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        defaultValue: DataTypes.NOW,
+        field: 'createdat' // Explicitly set the field name
+    },
+    updatedAt: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        defaultValue: DataTypes.NOW,
+        field: 'updatedat' // Explicitly set the field name
+    }
 }, {
     sequelize,
-    modelName: 'clock'
-    // other model options
+    modelName: 'clocks',
+    tableName: 'clocks',
+    timestamps: true,
+    underscored: true // This tells Sequelize to use snake_case for auto-generated fields
 });
 
 module.exports = Clock;

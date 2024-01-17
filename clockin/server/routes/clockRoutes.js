@@ -1,21 +1,31 @@
+// server/routes/clockRoutes.js
 const express = require('express');
-const passport = require('passport'); // Import passport
-const router = express.Router();
+const passport = require('passport');
 const clockController = require('../controllers/clockController');
+const router = express.Router();
 
-// Protected clocking routes
-// Ensure the user is authenticated before allowing access to these routes
-router.post(
-    '/clockin',
-    passport.authenticate('jwt', { session: false }), // Using JWT strategy here
+// Get Clock In Time route
+router.get('/getClockInTime', 
+    passport.authenticate('jwt', { session: false }),
+    clockController.getClockInTime
+);
+
+// Clock In route
+router.post('/clockin', 
+    passport.authenticate('jwt', { session: false }),
     clockController.clockIn
 );
 
-router.post(
-    '/clockout',
-    passport.authenticate('jwt', { session: false }), // Using JWT strategy here
+// Clock Out route
+router.post('/clockout', 
+    passport.authenticate('jwt', { session: false }),
     clockController.clockOut
 );
 
-// Export the router
+// Get Elapsed Time route
+router.get('/getElapsedTime', 
+    passport.authenticate('jwt', { session: false }),
+    clockController.getElapsedTime
+);
+
 module.exports = router;

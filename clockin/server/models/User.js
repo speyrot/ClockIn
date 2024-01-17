@@ -1,3 +1,4 @@
+// Server/models/User.js
 const { Sequelize, Model, DataTypes } = require('sequelize');
 const sequelize = require('./index'); // Adjust the path as necessary
 

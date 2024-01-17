@@ -36,8 +36,8 @@ const Dashboard = () => {
             const isToday = currentDate.getDate() === date.getDate() && currentDate.getMonth() === date.getMonth();
             return (
               <div className={`col ${isToday ? styles.highlight : ''}`} key={index}>
-                <div>{weekDays[date.getDay()]}</div> {/* Abbreviated day name */}
-                <div>{date.getDate()}</div> {/* Numerical Date Here */}
+                <div>{weekDays[date.getDay()]}</div> 
+                <div>{date.getDate()}</div> 
               </div>
             );
           })}
