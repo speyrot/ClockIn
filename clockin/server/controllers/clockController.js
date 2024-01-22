@@ -104,10 +104,11 @@ const clockController = {
             }
     
             latestClockIn.clockouttime = new Date();
-            const clockInTime = new Date(latestClockIn.clockintime);
-            const clockOutTime = latestClockIn.clockouttime;
+            // Ensure both times are treated as UTC
+            const clockInTimeUtc = new Date(latestClockIn.clockintime + 'Z').getTime();
+            const clockOutTimeUtc = latestClockIn.clockouttime.getTime();
     
-            const elapsedMilliseconds = clockOutTime.getTime() - clockInTime.getTime();
+            const elapsedMilliseconds = clockOutTimeUtc - clockInTimeUtc;
             latestClockIn.totalWorkedTime = formatTime(elapsedMilliseconds); // Format elapsed time
     
             await latestClockIn.save();
